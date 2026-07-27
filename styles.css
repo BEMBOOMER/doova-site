@@ -480,6 +480,7 @@ kbd {
   font-size: 0.94rem;
   max-width: 52ch;
 }
+.whatsnew-note + .whatsnew-note { margin-top: 0.7rem; }
 .whatsnew-visual {
   position: relative;
   display: grid;
