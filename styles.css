@@ -830,7 +830,10 @@ kbd {
 .about-mark {
   display: grid;
   place-items: center;
-  gap: 0.9rem;
+  /* zonder place-content rekken de twee rijen zich over de hele hoogte uit en
+     staan icoon en handle veel te ver uit elkaar */
+  place-content: center;
+  gap: 1.1rem;
   width: clamp(150px, 19vw, 200px);
   aspect-ratio: 1;
   border-radius: 26px;
@@ -842,7 +845,7 @@ kbd {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 .about-mark img {
-  border-radius: 20px;
+  border-radius: 27px;
   box-shadow: 0 14px 34px -14px rgba(31, 38, 135, 0.6);
   animation: mark-float 7s var(--ease) infinite;
 }
