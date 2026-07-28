@@ -10,10 +10,11 @@
 <meta property="og:title" content="Doova — je werkblad voor macOS" />
 <meta property="og:description" content="Notities, taken, bestanden en je agenda naast elkaar op een vrij canvas. Gratis en lokaal." />
 <meta property="og:image" content="assets/poster.jpg" />
-<meta name="theme-color" content="#06080b" />
+<meta name="theme-color" content="#f6f7fc" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -26,16 +27,17 @@
 
 <header class="nav" id="nav">
   <a class="brand" href="#top">
-    <img src="assets/icon.png" alt="" width="26" height="26" />
+    <img src="assets/icon.png" alt="" width="28" height="28" />
     <span>Doova</span>
   </a>
   <nav class="nav-links">
     <a href="#nieuw">Nieuw</a>
     <a href="#video">Video</a>
     <a href="#functies">Functies</a>
-    <a href="https://github.com/BEMBOOMER/doova" target="_blank" rel="noopener">GitHub</a>
+    <a href="#installeren">Installeren</a>
+    <a href="#over">Over</a>
   </nav>
-  <a class="btn btn-sm" href="#download">Download</a>
+  <a class="btn btn-primary btn-sm" href="#download">Download</a>
 </header>
 
 <main id="top">
@@ -59,7 +61,7 @@
     </div>
     <p class="fineprint reveal" style="--d:320ms">7,3 MB · Apple Silicon · updates komen automatisch binnen</p>
 
-    <div class="stage reveal" style="--d:400ms">
+    <div class="stage reveal" style="--d:400ms" id="stage">
       <div class="stage-glow" aria-hidden="true"></div>
       <div class="window">
         <img src="assets/app-shot.jpg" alt="Doova met een project waarin een briefing, een bestandenlijst en een checklist naast elkaar staan" />
@@ -215,6 +217,94 @@
     </div>
   </section>
 
+  <section class="section" id="installeren">
+    <div class="section-head reveal">
+      <p class="eyebrow">Installeren</p>
+      <h2>Eén keer door de poort van Apple.</h2>
+      <p class="lede">
+        Doova is niet ondertekend bij Apple, want dat kost een jaarabonnement en Doova is
+        gratis. Daarom houdt macOS hem de eerste keer tegen. Dit is de hele route, en je
+        doet hem precies één keer.
+      </p>
+    </div>
+
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step-n" aria-hidden="true">1</span>
+        <div class="step-body">
+          <h3>Download en sleep naar Programma's</h3>
+          <p>
+            Open de DMG en sleep het Doova-icoon op de map <b>Programma's</b>. Werp de
+            schijf daarna uit, die heb je niet meer nodig.
+          </p>
+        </div>
+      </li>
+
+      <li class="step reveal">
+        <span class="step-n" aria-hidden="true">2</span>
+        <div class="step-body">
+          <h3>Open Doova en klik op Gereed</h3>
+          <p>
+            macOS zegt <i>Apple kon niet verifiëren dat Doova vrij is van malware</i>.
+            Klik op <b>Gereed</b>. Klik niet op Verplaats naar prullenmand, dan gooi je
+            de app weg.
+          </p>
+          <div class="step-shot step-shot-alert" aria-hidden="true">
+            <p class="fake-title">"Doova" is niet geopend</p>
+            <p class="fake-body">Apple kon niet verifiëren dat "Doova" vrij is van malware.</p>
+            <span class="fake-btn fake-danger">Verplaats naar prullenmand</span>
+            <span class="fake-btn fake-ok">Gereed</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="step reveal">
+        <span class="step-n" aria-hidden="true">3</span>
+        <div class="step-body">
+          <h3>Ga naar Privacy en beveiliging</h3>
+          <p>
+            Open <b>Systeeminstellingen</b>, ga naar <b>Privacy en beveiliging</b> en scrol
+            naar beneden. Daar staat nu een regel over Doova, met een knop ernaast.
+          </p>
+          <div class="step-shot step-shot-settings" aria-hidden="true">
+            <p class="fake-body">"Doova" is geblokkeerd omdat het niet van een bekende ontwikkelaar komt.</p>
+            <span class="fake-btn fake-ok">Toch openen</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="step reveal">
+        <span class="step-n" aria-hidden="true">4</span>
+        <div class="step-body">
+          <h3>Klik op Toch openen</h3>
+          <p>
+            Bevestig met Touch ID of je wachtwoord. Open Doova daarna nog een keer en klik
+            in de laatste melding op <b>Open</b>. Klaar, macOS vraagt het nooit meer.
+          </p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="panel shortcut reveal">
+      <div class="shortcut-copy">
+        <p class="eyebrow">Sneller</p>
+        <h3>Liever in één regel?</h3>
+        <p>
+          Dit haalt de download-markering van de app af, waarna macOS hem gewoon opent.
+          Plak het in Terminal.
+        </p>
+      </div>
+      <div class="copyline">
+        <code id="cmd">xattr -dr com.apple.quarantine /Applications/Doova.app</code>
+        <button class="copy" id="copyBtn" aria-label="Kopieer het commando">
+          <svg class="ic-copy" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 5.5A2.5 2.5 0 0 0 12.5 3h-6A3.5 3.5 0 0 0 3 6.5v6A2.5 2.5 0 0 0 5.5 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <svg class="ic-done" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="copy-label">Kopieer</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="download">
     <div class="panel download reveal">
       <p class="eyebrow">Download</p>
@@ -229,22 +319,49 @@
         <li><span>Architectuur</span>Apple Silicon (M1 en nieuwer)</li>
         <li><span>Grootte</span>7,3 MB</li>
       </ul>
-      <p class="note">
-        Doova is niet ondertekend bij Apple, want dat kost een jaarabonnement en Doova is gratis.
-        Daarom houdt macOS hem de eerste keer tegen. Sleep de app naar <b>Programma's</b>, open hem,
-        en klik in de melding op <b>Gereed</b>. Ga daarna naar <b>Systeeminstellingen &rsaquo; Privacy
-        en beveiliging</b>, scrol naar beneden en klik bij Doova op <b>Toch openen</b>. Eén keer, daarna
-        nooit meer.
-      </p>
-      <p class="note">
-        Liever in één keer klaar? Open Terminal en plak dit, dan haalt macOS de download-markering weg:
-        <code>xattr -dr com.apple.quarantine /Applications/Doova.app</code>
-      </p>
       <p class="fineprint">
+        <a href="#installeren">Zo installeer je hem</a>
+        <span aria-hidden="true">·</span>
         <a href="https://github.com/BEMBOOMER/doova/releases" target="_blank" rel="noopener">Alle versies</a>
         <span aria-hidden="true">·</span>
         <a href="https://github.com/BEMBOOMER/doova" target="_blank" rel="noopener">Broncode op GitHub</a>
       </p>
+    </div>
+  </section>
+
+  <section class="section" id="over">
+    <div class="panel about reveal">
+      <div class="about-mark" aria-hidden="true">
+        <img src="assets/icon.png" alt="" width="76" height="76" />
+        <span class="about-handle">@bemooks</span>
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow">Wie dit maakt</p>
+        <h2>Gemaakt door bemooks.</h2>
+        <p class="lede">
+          Ik ben grafisch vormgever, en bij het bedrijf waar ik werk ben ik AI lead
+          specialist. Overdag gaat het over merken, beeld en hoe je AI zinnig inzet in
+          een team. 's Avonds bouw ik dingen als deze.
+        </p>
+        <p class="about-note">
+          Doova komt recht uit mijn eigen werkdag. Notities in de ene app, beeld in de
+          andere, en een planning die weer ergens anders stond. Op een gegeven moment
+          ga je dat zelf maar bouwen.
+        </p>
+        <p class="about-note">
+          De app, dit icoon, de promovideo en deze pagina zijn allemaal eigen werk.
+        </p>
+        <div class="about-links">
+          <a class="btn btn-ghost btn-sm" href="https://instagram.com/bemooks" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor"/></svg>
+            Instagram
+          </a>
+          <a class="btn btn-ghost btn-sm" href="https://github.com/BEMBOOMER" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2.2A9.8 9.8 0 0 0 8.9 21.3c.5.1.7-.2.7-.5v-1.8c-2.7.6-3.3-1.3-3.3-1.3-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.9.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2z" fill="currentColor"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
